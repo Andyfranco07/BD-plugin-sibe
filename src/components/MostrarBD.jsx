@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/main.scss";
+import FormularioBD from './FormularioBD';
 
 function MostrarBD() {
 	const [isLoaded, setIsLoaded] = useState(true);
@@ -30,25 +31,14 @@ function MostrarBD() {
 				<table className="wp-list-table widefat fixed striped table-view-list posts">
 					<thead>
 						<tr>
-							<td id="cb" className="manage-column column-cb check-column">
-								<label className="screen-reader-text" >
-									Seleccionar todo</label><input id="cb-select-all-1" type="checkbox" />
-							</td>
 							<th scope="col" id="title" className="manage-column column-title column-primary sortable desc">
-								<a href="http://localhost/wordpress/wp-admin/edit.php?orderby=title&amp;order=asc"><span>Título</span><span className="sorting-indicator"></span></a>
+								<a href=""><span>Título</span><span className="sorting-indicator"></span></a>
 							</th>
-							<th scope="col" id="author" className="manage-column column-author">Autor</th>
-							<th scope="col" id="categories" className="manage-column column-categories">Categorías</th>
-							<th scope="col" id="tags" className="manage-column column-tags">Etiquetas</th>
-							<th scope="col" id="comments" className="manage-column column-comments num sortable desc">
-								<a href="http://localhost/wordpress/wp-admin/edit.php?orderby=comment_count&amp;order=asc">
-									<span>
-										<span className="vers comment-grey-bubble" title="Comentarios" aria-hidden="true"></span>
-										<span className="screen-reader-text">Comentarios</span></span>
-									<span className="sorting-indicator"></span>
-								</a></th>
+							<th scope="col" id="URL" className="manage-column column-author">URL</th>
+							<th scope="col" id="URLImagen" className="manage-column column-categories">URLImagen</th>
+							<th scope="col" id="tags" className="manage-column column-tags">Descripcion</th>
 							<th scope="col" id="date" className="manage-column column-date sortable asc">
-								<a href="http://localhost/wordpress/wp-admin/edit.php?orderby=date&amp;order=desc">
+								<a href="">
 									<span>Fecha</span>
 									<span className="sorting-indicator"></span></a>
 							</th>
@@ -58,10 +48,21 @@ function MostrarBD() {
 					<tbody id="the-list">
 						{
 							items.map((item) => {
-								return <tr>
-									
+								return <tr key={item.id}>
 									<td>
-										<a class="row-title" key={item.id} href={item.attributes.urlArticulo} aria-label="«Página de ejemplo» (Editar)">{item.attributes.title}</a>
+										<a className="row-title"  href={item.attributes.urlArticulo} aria-label={item.attributes.title}>{item.attributes.title}</a>
+									</td>
+									<td>
+										<a className="row-title">{item.attributes.urlArticulo}</a>
+									</td>
+									<td>
+										<a className="row-title">{item.attributes.urlImagen}</a>
+									</td>
+									<td>
+										<a className="row-title">{item.attributes.descripcion}</a>
+									</td>
+									<td>
+										<button type="button" className="button action" onClick={()=>{item.id}}>Editar</button>
 									</td>
 
 								</tr>

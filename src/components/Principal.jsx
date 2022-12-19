@@ -12,7 +12,7 @@ function Principal() {
 		return (
 			<div className="principal">
 				<Cabecera/>
-				
+				<div className="botoncito"><button className="button action" onClick={()=>setVFormulario(false)}>Subir</button></div>
 				<MostrarBD />
 				
 			</div>
@@ -23,7 +23,7 @@ function Principal() {
 		return (
 			<div className="principal">
 				<Cabecera />
-				<button className="button action" onClick={()=>setVFormulario(true)}>Regresar</button>
+				<div className="botoncito"><button className="button action" onClick={(FormularioBD)=>setVFormulario(true)}>Regresar</button></div>
 				<FormularioBD/>
 				
 			</div>
