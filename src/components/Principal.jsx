@@ -28,7 +28,7 @@ function Principal() {
 				<div className="cabecera">
 					<h1 className="wp-heading-inline">Base de datos</h1>
 				</div>
-				<div className="botoncito"><button className="button action" onClick={() => estableceDatos(0)}>Regresar</button></div>
+				<div className="botoncito"><button className="button action" onClick={() => window.location.reload()}>Regresar</button></div>
 				<Editar id={datos} />
 			</div>
 		)
@@ -101,7 +101,7 @@ function Principal() {
 					<div className="cabecera">
 						<h1 className="wp-heading-inline">Base de datos</h1>
 					</div>
-					<div className="botoncito"><button className="button action" onClick={() => setVFormulario(true)}>Regresar</button></div>
+					<div className="botoncito"><button className="button action" onClick={() => window.location.reload()}>Regresar</button></div>
 					<FormularioBD />
 
 				</div>

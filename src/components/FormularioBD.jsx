@@ -2,6 +2,32 @@ import React from "react";
 import "../styles/main.scss";
 
 function FormularioBD() {
+	const baseURL = "http://localhost:1337/api/sibes";
+	function postData() {
+		var myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+
+		var raw = JSON.stringify({
+			"data": {
+				"title": document.getElementById('title').value,
+				"urlArticulo":document.getElementById('urlArticulo').value,
+
+			}
+		});
+
+		var requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+
+		fetch(baseURL, requestOptions)
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log('error', error));
+	}
+
 	return (
 		<div className="FormularioBD">
 			<div className="BaseDatos">
@@ -11,52 +37,18 @@ function FormularioBD() {
 						<label className="form-label">Titulo</label>
 					</div>
 					<div className="input-1">
-						<input type="text" className="form-control" id="TituloArticulo" />
+						<input type="text" className="form-control" id="title" />
 					</div>
 					<div className="labels">
 						<label className="form-label">URL</label>
 					</div>
 					<div className="input-1">
-						<input type="text" className="form-control" id="URLArticulo" />
+						<input type="text" className="form-control" id="urlArticulo" />
 					</div>
-					<div className="labels">
-						<label className="form-label">Tipo:</label>
-					</div>
-					<select className="form-select"  aria-label="Default select example">
-						<option selected>Selecciona un tipo</option>
-						<option value="1">Base de Datos</option>
-						<option value="2">Revista</option>
-					</select>
-					<div className="labels">
-						<label className="form-label">Categoria</label>
-					</div>
-					<select className="form-select" aria-label="Default select example">
-						<option selected>Selecciona una categoria</option>
-						<option value="1">Libre</option>
-						<option value="2">Suscrito</option>
-					</select>
-					<div className="labels">
-						<label className="form-label">URL Imagen</label>
-					</div>
-					<div className="input-1">
-						<input type="text" className="form-control" id="URLArticulo" />
-					</div>
-					<div className="labels">
-						<label className="form-label">Proxy</label>
-					</div>
-					<div className="form-check form-switch">
-						<input className="form-check-input" type="checkbox" role="switch" id="checkProxy" />
-						<label className="form-check-label">Activar</label>
-					</div>
-					<div className="labels">
-						<label className="form-label">Descripcion:</label>
-
-					</div>
-					<div className="form-floating">
-						<textarea className="form-control" placeholder="Descripcion de Revistas/Base de Datos" id="floatingTextarea"></textarea>
-					</div>
-					<button type="submit" className="button action">Subir</button>
 				</form>
+				<button className="btn btn-primary" onClick={postData}>
+						Actualizar
+					</button>
 			</div>
 		</div>
 	)

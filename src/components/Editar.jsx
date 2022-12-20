@@ -16,6 +16,10 @@ const Editar = (datos) => {
 
 	}, []);
 	let baseURL2 = "http://localhost:1337/api/sibes/";
+	const [formValue, setformValue] = useState({
+		title: '',
+		urlArticulo: ''
+	  });
 
 	function putData() {
 
@@ -43,6 +47,14 @@ const Editar = (datos) => {
 			.then(result => console.log(result))
 			.catch(error => console.log('error', error));
 	}
+
+	const handleChange = (event) => {
+		setformValue({
+		  ...formValue,
+		  [event.target.name]: event.target.value
+		});
+	  }
+	
 	return (
 		<div className="FormularioBD">
 			<div className="BaseDatos">
@@ -53,18 +65,18 @@ const Editar = (datos) => {
 							return (
 								<div key={item.id}>
 									<form >
-										<input type="hidden" className="form-control" id="id_base" value={item.id} />
+										<input type="hidden" className="form-control" id="id_base" defaultValue={item.id} />
 										<div className="labels">
 											<label className="form-label">Titulo:</label>
 										</div>
 										<div className="input-1">
-											<input type="text" className="form-control" id="title" value={item.attributes.title} />
+											<input type="text" className="form-control" id="title" name="title"  onChange={handleChange} defaultValue={item.attributes.title} />
 										</div>
 										<div className="input-1">
-											<input type="text" className="form-control" id="urlArticulo" value={item.attributes.urlArticulo} />
+											<input type="text" className="form-control" id="urlArticulo" name="urlArticulo" onChange={handleChange} defaultValue={item.attributes.urlArticulo} />
 										</div>
 										<div className="input-1">
-											<input type="text" className="form-control" id="urlImagen" value={item.attributes.urlImagen} />
+											<input type="text" className="form-control" id="urlImagen" name="urlArticulo" onChange={handleChange} defaultValue={item.attributes.urlImagen} />
 										</div>
 									</form>
 									<button className="btn btn-primary" onClick={putData}>
