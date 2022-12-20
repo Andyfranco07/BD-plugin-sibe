@@ -4,23 +4,23 @@ import FormularioBD from './FormularioBD';
 import Editar from "./Editar";
 import axios from "axios";
 
-const baseURL ="http://localhost:1337/api/sibes";
+const baseURL = "http://localhost:1337/api/sibes";
 
 function Principal() {
 
 	const [items, setItems] = useState([]);
 	const [datos, estableceDatos] = useState(0);
 	useEffect(() => {
-
-		fetch("")
-			.then((response) => response.json())
-			.then((data) => {
-				console.log("datos", data.data);
-				if (data.data) setItems(data.data);
+		axios
+			.get(baseURL)
+			.then(function (response) {
+				setItems(response.data.data)
 			})
-			.catch(error => console.log("error", error))
-
+			.catch(err => {
+				alert(err.message);
+			});
 	}, []);
+
 	const [vFormulario, setVFormulario] = useState(true);
 	if (datos >= 1) {
 		return (
@@ -29,7 +29,7 @@ function Principal() {
 					<h1 className="wp-heading-inline">Base de datos</h1>
 				</div>
 				<div className="botoncito"><button className="button action" onClick={() => estableceDatos(0)}>Regresar</button></div>
-				<Editar id={datos}/>
+				<Editar id={datos} />
 			</div>
 		)
 	}
