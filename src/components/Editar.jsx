@@ -15,13 +15,23 @@ const Editar = (datos) => {
 			.catch(error => console.log("error", error))
 
 	}, []);
-	let baseURL2 = "http://localhost:1337/api/sibes/";
+	var baseURL2 = "http://localhost:1337/api/sibes/";
 	const [formValue, setformValue] = useState({
 		title: '',
-		urlArticulo: ''
-	  });
+		urlArticulo: '',
+		proxy: ''
+	});
 
 	function putData() {
+
+		let mboolean = document.getElementById("proxy").value;
+
+		if (mboolean == 1) {
+			var bool_5 = Boolean('true');
+		}
+		else {
+			var bool_5 = Boolean('false');
+		}
 
 		let id = document.getElementById('id_base').value
 		baseURL2 += id;
@@ -31,7 +41,8 @@ const Editar = (datos) => {
 
 		var raw = JSON.stringify({
 			"data": {
-				"title": document.getElementById('title').value
+				"title": document.getElementById('title').value,
+				"proxy": bool_5
 			}
 		});
 
@@ -50,11 +61,11 @@ const Editar = (datos) => {
 
 	const handleChange = (event) => {
 		setformValue({
-		  ...formValue,
-		  [event.target.name]: event.target.value
+			...formValue,
+			[event.target.name]: event.target.value
 		});
-	  }
-	
+	}
+
 	return (
 		<div className="FormularioBD">
 			<div className="BaseDatos">
@@ -67,19 +78,41 @@ const Editar = (datos) => {
 									<form >
 										<input type="hidden" className="form-control" id="id_base" defaultValue={item.id} />
 										<div className="labels">
-											<label className="form-label">Titulo:</label>
+											<label className="form-label">Titulo</label>
 										</div>
 										<div className="input-1">
-											<input type="text" className="form-control" id="title" name="title"  onChange={handleChange} defaultValue={item.attributes.title} />
+											<input type="text" className="form-control" id="title" name="title" onChange={handleChange} defaultValue={item.attributes.title} />
+										</div>
+										<div className="labels">
+											<label className="form-label">Url Articulo</label>
 										</div>
 										<div className="input-1">
 											<input type="text" className="form-control" id="urlArticulo" name="urlArticulo" onChange={handleChange} defaultValue={item.attributes.urlArticulo} />
 										</div>
-										<div className="input-1">
-											<input type="text" className="form-control" id="urlImagen" name="urlArticulo" onChange={handleChange} defaultValue={item.attributes.urlImagen} />
+										<div className="labels">
+											<label className="form-label">Url Articulo</label>
 										</div>
+										<div className="input-1">
+											<input type="text" className="form-control" id="urlImagen" name="urlImagen" onChange={handleChange} defaultValue={item.attributes.urlImagen} />
+										</div>
+										{item.attributes.proxy == true ?
+											<div className="input-1">
+												<select defaultValue={'DEFAULT'} className="form-select" aria-label="Default select example">
+													<option value="DEFAULT">true</option>
+													<option id="proxy" name="proxy" value="1">false</option>
+												</select>
+											</div>
+											:
+											<div className="input-1">
+												<select defaultValue={'DEFAULT'} className="form-select" aria-label="Default select example">
+													<option value="DEFAULT">false</option>
+													<option id="proxy" name="proxy" value="2">true</option>
+												</select>
+											</div>
+										}
 									</form>
-									<button className="btn btn-primary" onClick={putData}>
+									
+									<button className="button action" onClick={putData}>
 										Actualizar
 									</button>
 								</div>

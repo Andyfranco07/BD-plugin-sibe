@@ -13,10 +13,16 @@
     .form-control, .form-select, .form-check{
         width: 50%;
         height: auto;
-        margin-left: 20%;
+        margin-left: 13%;
     }
  
     .labels{
+        margin-top: 10px;
+        margin-left: 10%;
+        margin-bottom: 5px;
+        font-size: 17px;
+    }
+    .input-1{
         margin-top: 10px;
     }
 }
@@ -29,6 +35,12 @@
 
     
 }
+.botoncito3{
+    position: absolute;
+    top:15px;
+    left: 14%;
+
+}
 
 .principal {
     .botoncito{
@@ -37,4 +49,5 @@
         left: 14%;
 
     }
+    
 }

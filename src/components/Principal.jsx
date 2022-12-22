@@ -28,7 +28,7 @@ function Principal() {
 				<div className="cabecera">
 					<h1 className="wp-heading-inline">Base de datos</h1>
 				</div>
-				<div className="botoncito"><button className="button action" onClick={() => window.location.reload()}>Regresar</button></div>
+				<div className="botoncito3"><button className="button action" onClick={() => window.location.reload()}>Regresar</button></div>
 				<Editar id={datos} />
 			</div>
 		)
@@ -45,18 +45,14 @@ function Principal() {
 						<table className="wp-list-table widefat fixed striped table-view-list posts">
 							<thead>
 								<tr>
-									<th scope="col" id="id" className="manage-column column-author">id</th>
-									<th scope="col" id="title" className="manage-column column-title column-primary sortable desc">
-										<a href=""><span>Título</span><span className="sorting-indicator"></span></a>
-									</th>
-									<th scope="col" id="URL" className="manage-column column-author">URL</th>
-									<th scope="col" id="URLImagen" className="manage-column column-categories">URLImagen</th>
+									<th scope="col" id="tags" className="manage-column column-author">id</th>
+									<th scope="col" id="tags" className="manage-column column-tags">Titulo</th>
+									<th scope="col" id="tags" className="manage-column column-author">URL</th>
+									<th scope="col" id="tags" className="manage-column column-categories">URLImagen</th>
 									<th scope="col" id="tags" className="manage-column column-tags">Descripcion</th>
-									<th scope="col" id="date" className="manage-column column-date sortable asc">
-										<a href="">
-											<span>Fecha</span>
-											<span className="sorting-indicator"></span></a>
-									</th>
+									<th scope="col" id="tags" className="manage-column column-tags">Proxy</th>
+									<th scope="col" id="tags" className="manage-column column-tags">Editar</th>
+
 								</tr>
 							</thead>
 
@@ -76,6 +72,11 @@ function Principal() {
 											</td>
 											<td>
 												<a className="row-title">{item.attributes.descripcion}</a>
+											</td>
+											<td>
+												{item.attributes.proxy == true ?
+													<a className="row-title">true</a>
+													: <a className="row-title">false</a>}
 											</td>
 											<td>
 												<div className="Hijo">
@@ -101,9 +102,8 @@ function Principal() {
 					<div className="cabecera">
 						<h1 className="wp-heading-inline">Base de datos</h1>
 					</div>
-					<div className="botoncito"><button className="button action" onClick={() => window.location.reload()}>Regresar</button></div>
+					<div className="botoncito 2"><button className="button action" onClick={() => window.location.reload()}>Regresar</button></div>
 					<FormularioBD />
-
 				</div>
 			);
 		}

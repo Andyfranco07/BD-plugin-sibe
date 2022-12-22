@@ -10,7 +10,7 @@ function FormularioBD() {
 		var raw = JSON.stringify({
 			"data": {
 				"title": document.getElementById('title').value,
-				"urlArticulo":document.getElementById('urlArticulo').value,
+				"urlArticulo": document.getElementById('urlArticulo').value,
 
 			}
 		});
@@ -37,18 +37,18 @@ function FormularioBD() {
 						<label className="form-label">Titulo</label>
 					</div>
 					<div className="input-1">
-						<input type="text" className="form-control" id="title" />
+						<input type="text" className="form-control" id="title" required />
 					</div>
 					<div className="labels">
 						<label className="form-label">URL</label>
 					</div>
 					<div className="input-1">
-						<input type="text" className="form-control" id="urlArticulo" />
+						<input type="text" className="form-control" id="urlArticulo" required />
 					</div>
 				</form>
-				<button className="btn btn-primary" onClick={postData}>
-						Actualizar
-					</button>
+				<button className="button action"  type="submit" onClick={postData}>
+					Subir
+				</button>
 			</div>
 		</div>
 	)
