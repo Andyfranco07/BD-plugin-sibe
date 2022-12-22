@@ -47,10 +47,14 @@ function Principal() {
 								<tr>
 									<th scope="col" id="tags" className="manage-column column-author">id</th>
 									<th scope="col" id="tags" className="manage-column column-tags">Titulo</th>
-									<th scope="col" id="tags" className="manage-column column-author">URL</th>
-									<th scope="col" id="tags" className="manage-column column-categories">URLImagen</th>
-									<th scope="col" id="tags" className="manage-column column-tags">Descripcion</th>
+									<th scope="col" id="tags" className="manage-column column-author">Url Imagen</th>
+									<th scope="col" id="tags" className="manage-column column-categories">Url Articulo</th>
 									<th scope="col" id="tags" className="manage-column column-tags">Proxy</th>
+									<th scope="col" id="tags" className="manage-column column-tags">Tipo</th>
+									<th scope="col" id="tags" className="manage-column column-tags">Categoria</th>
+									<th scope="col" id="tags" className="manage-column column-tags">Descripcion</th>
+									<th scope="col" id="tags" className="manage-column column-tags">Filtro Atoz</th>
+									<th scope="col" id="tags" className="manage-column column-tags">Filtro Extras</th>
 									<th scope="col" id="tags" className="manage-column column-tags">Editar</th>
 
 								</tr>
@@ -62,21 +66,33 @@ function Principal() {
 										return <tr key={item.id}>
 											<td scope="col" id="id" className="manage-column column-author">{item.id}</td>
 											<td>
-												<a className="row-title" href={item.attributes.urlArticulo} aria-label={item.attributes.title}>{item.attributes.title}</a>
+												<p className="row-title">{item.attributes.title}</p>
 											</td>
 											<td>
-												<a className="row-title">{item.attributes.urlArticulo}</a>
+												<p className="row-title">{item.attributes.imagen_url}</p>
 											</td>
 											<td>
-												<a className="row-title">{item.attributes.urlImagen}</a>
-											</td>
-											<td>
-												<a className="row-title">{item.attributes.descripcion}</a>
+												<p className="row-title">{item.attributes.base_url}</p>
 											</td>
 											<td>
 												{item.attributes.proxy == true ?
-													<a className="row-title">True</a>
-													: <a className="row-title">False</a>}
+													<p className="row-title">True</p>
+													: <p className="row-title">False</p>}
+											</td>
+											<td>
+												<p className="row-title">{item.attributes.tipo}</p>
+											</td>
+											<td>
+												<p className="row-title">{item.attributes.categoria}</p>
+											</td>
+											<td>
+												<p className="row-title">{item.attributes.descripcion}</p>
+											</td>
+											<td>
+												<p className="row-title">{item.attributes.filtros_atoz}</p>
+											</td>
+											<td>
+												<p className="row-title">{item.attributes.filtros_extras}</p>
 											</td>
 											<td>
 												<div className="Hijo">

@@ -17,9 +17,15 @@ const Editar = (datos) => {
 	}, []);
 	var baseURL2 = "http://localhost:1337/api/sibes/";
 	const [formValue, setformValue] = useState({
-		title: '',
+		titulo: '',
 		imagen_url: '',
-		proxy: ''
+		base_url: '',
+		proxy: '',
+		tipo: '',
+		categoria: '',
+		descripcion: '',
+		filtros_atoz: '',
+		filtros_extras: '',
 	});
 
 	function putData() {
@@ -41,10 +47,15 @@ const Editar = (datos) => {
 
 		var raw = JSON.stringify({
 			"data": {
-				"title": document.getElementById('title').value,
+				"titulo": document.getElementById('titulo').value,
 				"imagen_url": document.getElementById('imagen_url').value,
-
-				"proxy": bool_5
+				"base_url": document.getElementById('base_url').value,
+				"proxy": bool_5,
+				"tipo": document.getElementById('tipo').value,
+				"categoria": document.getElementById('categoria').value,
+				"descripcion": document.getElementById('descripcion').value,
+				"filtros_atoz": document.getElementById('filtros_atoz').value,
+				"filtros_extras": document.getElementById('filtros_extras').value,
 			}
 		});
 
@@ -71,19 +82,20 @@ const Editar = (datos) => {
 	return (
 		<div className="FormularioBD">
 			<div className="BaseDatos">
-				<h1 className="wp-heading-inline">Editar</h1>
 				{
 					items.map((item) => {
 						if (item.id == datos.id) {
 							return (
 								<div key={item.id}>
-									<form >
+									<form className="Formulita">
+										<br />
+										<h1 className="encabezado">Editar</h1>
 										<input type="hidden" className="form-control" id="id_base" defaultValue={item.id} />
 										<div className="labels">
 											<label className="form-label">Titulo</label>
 										</div>
 										<div className="input-1">
-											<input type="text" className="form-control" id="title" name="title" onChange={handleChange} defaultValue={item.attributes.title} />
+											<input type="text" className="form-control" id="titulo" name="titulo" onChange={handleChange} defaultValue={item.attributes.titulo} />
 										</div>
 										<div className="labels">
 											<label className="form-label">Url Imagen</label>
@@ -95,7 +107,10 @@ const Editar = (datos) => {
 											<label className="form-label">Url Articulo</label>
 										</div>
 										<div className="input-1">
-											<input type="text" className="form-control" id="urlImagen" name="urlImagen" onChange={handleChange} defaultValue={item.attributes.urlImagen} />
+											<input type="text" className="form-control" id="base_url" name="base_url" onChange={handleChange} defaultValue={item.attributes.base_url} />
+										</div>
+										<div className="labels">
+											<label className="form-label">Proxy</label>
 										</div>
 										{item.attributes.proxy == true ?
 											<div className="input-1">
@@ -106,20 +121,52 @@ const Editar = (datos) => {
 											</div>
 											:
 											<div className="input-1">
-												<select  className="form-select" aria-label="Default select example">
+												<select className="form-select" aria-label="Default select example">
 													<option value="2">False</option>
 													<option id="proxy" name="proxy" value="1">True</option>
 												</select>
 											</div>
 										}
+										<div className="labels">
+											<label className="form-label">Tipo</label>
+										</div>
+										<div className="input-1">
+											<input type="text" className="form-control" id="tipo" name="tipo" onChange={handleChange} defaultValue={item.attributes.tipo} />
+										</div>
+										<div className="labels">
+											<label className="form-label">Categoria</label>
+										</div>
+										<div className="input-1">
+											<input type="text" className="form-control" id="categoria" name="categoria" onChange={handleChange} defaultValue={item.attributes.categoria} />
+										</div>
+										<div className="labels">
+											<label className="form-label">Descripcion</label>
+										</div>
+										<div className="input-1">
+											<textarea className="form-control" placeholder="Descripcion" type="text" id="descripcion" name="descripcion" onChange={handleChange} defaultValue={item.attributes.descripcion}></textarea>
+										</div>
+										<div className="labels">
+											<label className="form-label">Filtros Atoz</label>
+										</div>
+										<div className="input-1">
+											<input type="text" className="form-control" placeholder="Filtros Atoz" id="filtros_atoz" name="filtros_atoz" onChange={handleChange} defaultValue={item.attributes.filtros_atoz} />
+										</div>
+										<div className="labels">
+											<label className="form-label">Filtros Extras</label>
+										</div>
+										<div className="input-1">
+											<input type="text" className="form-control" placeholder="Filtros Extras" id="filtros_extras" name="filtros_extras" onChange={handleChange} defaultValue={item.attributes.filtros_extras} />
+										</div>
+										<div className="botonUno">
+											<button className="button action" onClick={putData}>
+												Actualizar
+											</button>
+										</div>
+										<br />
 									</form>
-									
-									<button className="button action" onClick={putData}>
-										Actualizar
-									</button>
+
 								</div>
 							)
-
 						}
 					})}
 			</div>
