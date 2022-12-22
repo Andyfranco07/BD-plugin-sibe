@@ -75,8 +75,8 @@ function Principal() {
 											</td>
 											<td>
 												{item.attributes.proxy == true ?
-													<a className="row-title">true</a>
-													: <a className="row-title">false</a>}
+													<a className="row-title">True</a>
+													: <a className="row-title">False</a>}
 											</td>
 											<td>
 												<div className="Hijo">

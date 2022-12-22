@@ -2,15 +2,27 @@ import React from "react";
 import "../styles/main.scss";
 
 function FormularioBD() {
-	const baseURL = "http://localhost:1337/api/sibes";
+	const baseURL = "http://localhost:1337/api/sibes/";
 	function postData() {
+		var mboolean = document.getElementById("proxy").value;
+
+		if (mboolean == "1") {
+			var bool_5 = Boolean(true);
+		}
+		else {
+			var bool_5 = Boolean(false);
+		}
+
 		var myHeaders = new Headers();
 		myHeaders.append("Content-Type", "application/json");
+
+
 
 		var raw = JSON.stringify({
 			"data": {
 				"title": document.getElementById('title').value,
 				"urlArticulo": document.getElementById('urlArticulo').value,
+				"proxy": bool_5
 
 			}
 		});
@@ -45,8 +57,15 @@ function FormularioBD() {
 					<div className="input-1">
 						<input type="text" className="form-control" id="urlArticulo" required />
 					</div>
+					<div className="input-1">
+						<select id="proxy" name="proxy" className="form-select" defaultValue={'DEFAULT'} >
+							<option value="DEFAULT" disabled>Elige una opcion ...</option>
+							<option  value="2">False</option>
+							<option  value="1">True</option>
+						</select>
+					</div>
 				</form>
-				<button className="button action"  type="submit" onClick={postData}>
+				<button className="button action" onClick={postData}>
 					Subir
 				</button>
 			</div>

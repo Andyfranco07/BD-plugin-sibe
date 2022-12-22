@@ -18,19 +18,19 @@ const Editar = (datos) => {
 	var baseURL2 = "http://localhost:1337/api/sibes/";
 	const [formValue, setformValue] = useState({
 		title: '',
-		urlArticulo: '',
+		imagen_url: '',
 		proxy: ''
 	});
 
 	function putData() {
 
-		let mboolean = document.getElementById("proxy").value;
+		var mboolean = document.getElementById("proxy").value;
 
-		if (mboolean == 1) {
-			var bool_5 = Boolean('true');
+		if (mboolean == "1") {
+			var bool_5 = Boolean(true);
 		}
 		else {
-			var bool_5 = Boolean('false');
+			var bool_5 = Boolean(false);
 		}
 
 		let id = document.getElementById('id_base').value
@@ -42,6 +42,8 @@ const Editar = (datos) => {
 		var raw = JSON.stringify({
 			"data": {
 				"title": document.getElementById('title').value,
+				"imagen_url": document.getElementById('imagen_url').value,
+
 				"proxy": bool_5
 			}
 		});
@@ -84,10 +86,10 @@ const Editar = (datos) => {
 											<input type="text" className="form-control" id="title" name="title" onChange={handleChange} defaultValue={item.attributes.title} />
 										</div>
 										<div className="labels">
-											<label className="form-label">Url Articulo</label>
+											<label className="form-label">Url Imagen</label>
 										</div>
 										<div className="input-1">
-											<input type="text" className="form-control" id="urlArticulo" name="urlArticulo" onChange={handleChange} defaultValue={item.attributes.urlArticulo} />
+											<input type="text" className="form-control" id="imagen_url" name="imagen_url" onChange={handleChange} defaultValue={item.attributes.imagen_url} />
 										</div>
 										<div className="labels">
 											<label className="form-label">Url Articulo</label>
@@ -97,16 +99,16 @@ const Editar = (datos) => {
 										</div>
 										{item.attributes.proxy == true ?
 											<div className="input-1">
-												<select defaultValue={'DEFAULT'} className="form-select" aria-label="Default select example">
-													<option value="DEFAULT">true</option>
-													<option id="proxy" name="proxy" value="1">false</option>
+												<select className="form-select" aria-label="Default select example">
+													<option value="1">True</option>
+													<option id="proxy" name="proxy" value="2">False</option>
 												</select>
 											</div>
 											:
 											<div className="input-1">
-												<select defaultValue={'DEFAULT'} className="form-select" aria-label="Default select example">
-													<option value="DEFAULT">false</option>
-													<option id="proxy" name="proxy" value="2">true</option>
+												<select  className="form-select" aria-label="Default select example">
+													<option value="2">False</option>
+													<option id="proxy" name="proxy" value="1">True</option>
 												</select>
 											</div>
 										}
