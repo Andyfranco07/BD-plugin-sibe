@@ -66,7 +66,7 @@ function Principal() {
 										return <tr key={item.id}>
 											<td scope="col" id="id" className="manage-column column-author">{item.id}</td>
 											<td>
-												<p className="row-title">{item.attributes.title}</p>
+												<p className="row-title">{item.attributes.titulo}</p>
 											</td>
 											<td>
 												<p className="row-title">{item.attributes.imagen_url}</p>
