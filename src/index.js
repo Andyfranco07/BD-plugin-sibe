@@ -5,6 +5,7 @@ import Principal from "./components/Principal";
 
 
 
+
 ReactDom.render(<Principal/>, document.getElementById('BaseDatosPlugin'));
 
 
